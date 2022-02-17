@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Women_EmpowerementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="admin_password" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="course">
+    <Key>
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="course_description" Type="varchar" MaxLength="3000" />
+    <Property Name="course_start_date" Type="date" Nullable="false" />
+    <Property Name="course_end_date" Type="date" Nullable="false" />
+    <Property Name="intitial_seats" Type="int" Nullable="false" />
+    <Property Name="currentseats" Type="real" />
+    <Property Name="trainer_id" Type="int" />
+    <Property Name="status" Type="bit" />
+    <Property Name="coursecategory" Type="int" />
+    <Property Name="approvedstatus" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="coursecategory">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="enrollment">
+    <Key>
+      <PropertyRef Name="women_id" />
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="women_id" Type="int" Nullable="false" />
+    <Property Name="course_id" Type="int" Nullable="false" />
+    <Property Name="enrollment_date" Type="date" />
+    <Property Name="approval_status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="feedback">
+    <Key>
+      <PropertyRef Name="feedback_id" />
+    </Key>
+    <Property Name="feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="feedback_date" Type="date" />
+    <Property Name="feedback_description" Type="varchar(max)" />
+    <Property Name="women_id" Type="int" />
+  </EntityType>
+  <EntityType Name="ngo">
+    <Key>
+      <PropertyRef Name="ngo_id" />
+    </Key>
+    <Property Name="ngo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ngo_name" Type="varchar(max)" />
+    <Property Name="contact_person" Type="varchar(max)" />
+    <Property Name="ngo_contact_number" Type="varchar(max)" />
+    <Property Name="ngo_address" Type="varchar(max)" />
+    <Property Name="ngo_city" Type="varchar(max)" />
+    <Property Name="ngo_state" Type="varchar(max)" />
+    <Property Name="ngo_description" Type="varchar(max)" />
+    <Property Name="ngo_email" Type="varchar" MaxLength="50" />
+    <Property Name="ngo_password" Type="varchar(max)" />
+    <Property Name="ngo_supportingdocument" Type="varchar(max)" />
+    <Property Name="status" Type="bit" />
+    <Property Name="approvedstatus" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="trainer_id" />
+    </Key>
+    <Property Name="trainer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trainer_full_name" Type="varchar(max)" />
+    <Property Name="trainer_contact_number" Type="varchar(max)" />
+    <Property Name="trainer_email" Type="varchar(max)" />
+    <Property Name="ngo_id" Type="int" />
+  </EntityType>
+  <EntityType Name="women">
+    <Key>
+      <PropertyRef Name="women_id" />
+    </Key>
+    <Property Name="women_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="women_full_name" Type="varchar(max)" />
+    <Property Name="women_contact_number" Type="varchar(max)" />
+    <Property Name="women_address" Type="varchar(max)" />
+    <Property Name="women_city" Type="varchar(max)" />
+    <Property Name="women_state" Type="varchar(max)" />
+    <Property Name="women_fathername" Type="varchar(max)" />
+    <Property Name="women_mothername" Type="varchar(max)" />
+    <Property Name="women_spousename" Type="varchar(max)" />
+    <Property Name="women_email" Type="varchar" MaxLength="50" />
+    <Property Name="women_password" Type="varchar(max)" />
+    <Property Name="women_document" Type="varchar(max)" />
+    <Property Name="status" Type="bit" />
+    <Property Name="women_marital_status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__course__courseca__44FF419A">
+    <End Role="coursecategory" Type="Self.coursecategory" Multiplicity="0..1" />
+    <End Role="course" Type="Self.course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coursecategory">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="course">
+        <PropertyRef Name="coursecategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__course__trainer___300424B4">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+    <End Role="course" Type="Self.course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="course">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__cours__3E52440B">
+    <End Role="course" Type="Self.course" Multiplicity="1" />
+    <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="course">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="enrollment">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__women__3D5E1FD2">
+    <End Role="women" Type="Self.women" Multiplicity="1" />
+    <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="women">
+        <PropertyRef Name="women_id" />
+      </Principal>
+      <Dependent Role="enrollment">
+        <PropertyRef Name="women_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__feedback__women___47DBAE45">
+    <End Role="women" Type="Self.women" Multiplicity="0..1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="women">
+        <PropertyRef Name="women_id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="women_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trainer__ngo_id__2C3393D0">
+    <End Role="ngo" Type="Self.ngo" Multiplicity="0..1" />
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ngo">
+        <PropertyRef Name="ngo_id" />
+      </Principal>
+      <Dependent Role="Trainer">
+        <PropertyRef Name="ngo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Women_EmpowerementModelStoreContainer">
+    <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="coursecategory" EntityType="Self.coursecategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="enrollment" EntityType="Self.enrollment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ngo" EntityType="Self.ngo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="women" EntityType="Self.women" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__course__courseca__44FF419A" Association="Self.FK__course__courseca__44FF419A">
+      <End Role="coursecategory" EntitySet="coursecategory" />
+      <End Role="course" EntitySet="course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__course__trainer___300424B4" Association="Self.FK__course__trainer___300424B4">
+      <End Role="Trainer" EntitySet="Trainer" />
+      <End Role="course" EntitySet="course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__cours__3E52440B" Association="Self.FK__enrollmen__cours__3E52440B">
+      <End Role="course" EntitySet="course" />
+      <End Role="enrollment" EntitySet="enrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__women__3D5E1FD2" Association="Self.FK__enrollmen__women__3D5E1FD2">
+      <End Role="women" EntitySet="women" />
+      <End Role="enrollment" EntitySet="enrollment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__feedback__women___47DBAE45" Association="Self.FK__feedback__women___47DBAE45">
+      <End Role="women" EntitySet="women" />
+      <End Role="feedback" EntitySet="feedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trainer__ngo_id__2C3393D0" Association="Self.FK__Trainer__ngo_id__2C3393D0">
+      <End Role="ngo" EntitySet="ngo" />
+      <End Role="Trainer" EntitySet="Trainer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

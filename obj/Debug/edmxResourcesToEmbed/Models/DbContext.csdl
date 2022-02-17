@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Women_EmpowerementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="course">
+    <Key>
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="course_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="course_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="course_description" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="course_start_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="course_end_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="intitial_seats" Type="Int32" Nullable="false" />
+    <Property Name="currentseats" Type="Single" />
+    <Property Name="trainer_id" Type="Int32" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="coursecategory" Type="Int32" />
+    <Property Name="approvedstatus" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="coursecategory1" Relationship="Self.FK__course__courseca__44FF419A" FromRole="course" ToRole="coursecategory" />
+    <NavigationProperty Name="Trainer" Relationship="Self.FK__course__trainer___300424B4" FromRole="course" ToRole="Trainer" />
+    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__3E52440B" FromRole="course" ToRole="enrollment" />
+  </EntityType>
+  <EntityType Name="coursecategory">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="courses" Relationship="Self.FK__course__courseca__44FF419A" FromRole="coursecategory" ToRole="course" />
+  </EntityType>
+  <EntityType Name="enrollment">
+    <Key>
+      <PropertyRef Name="women_id" />
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="women_id" Type="Int32" Nullable="false" />
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="enrollment_date" Type="DateTime" Precision="0" />
+    <Property Name="approval_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="course" Relationship="Self.FK__enrollmen__cours__3E52440B" FromRole="enrollment" ToRole="course" />
+    <NavigationProperty Name="woman" Relationship="Self.FK__enrollmen__women__3D5E1FD2" FromRole="enrollment" ToRole="women" />
+  </EntityType>
+  <EntityType Name="feedback">
+    <Key>
+      <PropertyRef Name="feedback_id" />
+    </Key>
+    <Property Name="feedback_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="feedback_date" Type="DateTime" Precision="0" />
+    <Property Name="feedback_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_id" Type="Int32" />
+    <NavigationProperty Name="woman" Relationship="Self.FK__feedback__women___47DBAE45" FromRole="feedback" ToRole="women" />
+  </EntityType>
+  <EntityType Name="ngo">
+    <Key>
+      <PropertyRef Name="ngo_id" />
+    </Key>
+    <Property Name="ngo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ngo_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="contact_person" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_contact_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_supportingdocument" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="approvedstatus" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Trainers" Relationship="Self.FK__Trainer__ngo_id__2C3393D0" FromRole="ngo" ToRole="Trainer" />
+  </EntityType>
+  <EntityType Name="Trainer">
+    <Key>
+      <PropertyRef Name="trainer_id" />
+    </Key>
+    <Property Name="trainer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="trainer_full_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="trainer_contact_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="trainer_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ngo_id" Type="Int32" />
+    <NavigationProperty Name="courses" Relationship="Self.FK__course__trainer___300424B4" FromRole="Trainer" ToRole="course" />
+    <NavigationProperty Name="ngo" Relationship="Self.FK__Trainer__ngo_id__2C3393D0" FromRole="Trainer" ToRole="ngo" />
+  </EntityType>
+  <EntityType Name="woman">
+    <Key>
+      <PropertyRef Name="women_id" />
+    </Key>
+    <Property Name="women_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="women_full_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_contact_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_fathername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_mothername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_spousename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="women_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="women_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="women_marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__women__3D5E1FD2" FromRole="women" ToRole="enrollment" />
+    <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__women___47DBAE45" FromRole="women" ToRole="feedback" />
+  </EntityType>
+  <Association Name="FK__course__courseca__44FF419A">
+    <End Role="coursecategory" Type="Self.coursecategory" Multiplicity="0..1" />
+    <End Role="course" Type="Self.course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="coursecategory">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="course">
+        <PropertyRef Name="coursecategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__course__trainer___300424B4">
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+    <End Role="course" Type="Self.course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trainer">
+        <PropertyRef Name="trainer_id" />
+      </Principal>
+      <Dependent Role="course">
+        <PropertyRef Name="trainer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__cours__3E52440B">
+    <End Role="course" Type="Self.course" Multiplicity="1" />
+    <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="course">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="enrollment">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__enrollmen__women__3D5E1FD2">
+    <End Role="women" Type="Self.woman" Multiplicity="1" />
+    <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="women">
+        <PropertyRef Name="women_id" />
+      </Principal>
+      <Dependent Role="enrollment">
+        <PropertyRef Name="women_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__feedback__women___47DBAE45">
+    <End Role="women" Type="Self.woman" Multiplicity="0..1" />
+    <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="women">
+        <PropertyRef Name="women_id" />
+      </Principal>
+      <Dependent Role="feedback">
+        <PropertyRef Name="women_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trainer__ngo_id__2C3393D0">
+    <End Role="ngo" Type="Self.ngo" Multiplicity="0..1" />
+    <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ngo">
+        <PropertyRef Name="ngo_id" />
+      </Principal>
+      <Dependent Role="Trainer">
+        <PropertyRef Name="ngo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Women_EmpowerementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="courses" EntityType="Self.course" />
+    <EntitySet Name="coursecategories" EntityType="Self.coursecategory" />
+    <EntitySet Name="enrollments" EntityType="Self.enrollment" />
+    <EntitySet Name="feedbacks" EntityType="Self.feedback" />
+    <EntitySet Name="ngoes" EntityType="Self.ngo" />
+    <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+    <EntitySet Name="women" EntityType="Self.woman" />
+    <AssociationSet Name="FK__course__courseca__44FF419A" Association="Self.FK__course__courseca__44FF419A">
+      <End Role="coursecategory" EntitySet="coursecategories" />
+      <End Role="course" EntitySet="courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__course__trainer___300424B4" Association="Self.FK__course__trainer___300424B4">
+      <End Role="Trainer" EntitySet="Trainers" />
+      <End Role="course" EntitySet="courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__cours__3E52440B" Association="Self.FK__enrollmen__cours__3E52440B">
+      <End Role="course" EntitySet="courses" />
+      <End Role="enrollment" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__enrollmen__women__3D5E1FD2" Association="Self.FK__enrollmen__women__3D5E1FD2">
+      <End Role="women" EntitySet="women" />
+      <End Role="enrollment" EntitySet="enrollments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__feedback__women___47DBAE45" Association="Self.FK__feedback__women___47DBAE45">
+      <End Role="women" EntitySet="women" />
+      <End Role="feedback" EntitySet="feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trainer__ngo_id__2C3393D0" Association="Self.FK__Trainer__ngo_id__2C3393D0">
+      <End Role="ngo" EntitySet="ngoes" />
+      <End Role="Trainer" EntitySet="Trainers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

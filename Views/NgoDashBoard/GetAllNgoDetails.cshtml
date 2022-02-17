@@ -1,0 +1,89 @@
+﻿@model IEnumerable<AdminModule.Models.ngo>
+
+@{
+    ViewBag.Title = "GetAllNgoDetails";
+}
+
+<h2>GetAllNgoDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contact_person)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_contact_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_email)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.approvedstatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_person)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_contact_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_email)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.approvedstatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "GetNgoById", new {  id=item.ngo_id }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

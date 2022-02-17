@@ -1,0 +1,150 @@
+﻿@model AdminModule.Models.ngo
+
+@{
+    ViewBag.Title = "GetNgoById";
+}
+
+<h2>GetNgoById</h2>
+
+<div>
+    <h4>ngo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contact_person)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact_person)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_contact_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_contact_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_supportingdocument)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_supportingdocument)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.approvedstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.approvedstatus)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+    @using (Html.BeginForm("GetNgoById", "NgoDashBoard", FormMethod.Post))
+    {
+        if (ViewBag.Status == "pending")
+        {
+            <input type="submit" name="Approved" value="Approved" />
+            <input type="submit" name="Reject" value="Reject" />
+        }
+        else
+        {
+            <p>@Model.approvedstatus</p>
+        }
+
+    }
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@if (@ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript" lang="javascript">
+            window.onload=function(){
+                alert("@ViewBag.SuccessMessage")
+            }
+    </script>
+}

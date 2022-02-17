@@ -1,0 +1,130 @@
+﻿@model AdminModule.Models.woman
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>woman</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.women_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_contact_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_contact_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_fathername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_fathername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_mothername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_mothername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_spousename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_spousename)
+        </dd>
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_document)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_marital_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_marital_status)
+        </dd>
+
+    </dl>
+
+
+    @using (Html.BeginForm("Details", "DashBoard", FormMethod.Post))
+    {
+        <input type="submit" name="Approved" value="Approved" />
+        <input type="submit" name="Reject" value="Reject" />
+    }
+
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@if (@ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript" lang="javascript">
+            window.onload=function(){
+                alert("@ViewBag.SuccessMessage")
+            }
+    </script>
+}
+
