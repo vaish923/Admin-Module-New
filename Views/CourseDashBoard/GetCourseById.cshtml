@@ -1,0 +1,117 @@
+﻿@model AdminModule.Models.getCourseById_Result
+
+@{
+    ViewBag.Title = "GetCourseById";
+}
+
+<h2>GetCourseById</h2>
+
+<div>
+    <h4>getCourseById_Result</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.course_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_end_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_end_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngo_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngo_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trainer_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trainer_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+    </dl>
+</div>
+
+@using (Html.BeginForm("GetCourseById", "CourseDashBoard", FormMethod.Post))
+{
+    if (ViewBag.Status == "pending")
+    {
+        <input type="submit" name="Approved" value="Approved" />
+        <input type="submit" name="Reject" value="Reject" />
+
+    }
+
+}
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@if (@ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript" lang="javascript">
+            window.onload=function(){
+                alert("@ViewBag.SuccessMessage")
+            }
+    </script>
+}

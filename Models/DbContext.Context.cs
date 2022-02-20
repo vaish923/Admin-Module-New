@@ -12,6 +12,8 @@ namespace AdminModule.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Women_EmpowerementEntities : DbContext
     {
@@ -33,5 +35,33 @@ namespace AdminModule.Models
         public virtual DbSet<ngo> ngoes { get; set; }
         public virtual DbSet<Trainer> Trainers { get; set; }
         public virtual DbSet<woman> women { get; set; }
+    
+        public virtual ObjectResult<getAllEnrollments_Result> getAllEnrollments()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllEnrollments_Result>("getAllEnrollments");
+        }
+    
+        public virtual ObjectResult<getAllEnrollmentsById_Result> getAllEnrollmentsById(Nullable<int> women_id)
+        {
+            var women_idParameter = women_id.HasValue ?
+                new ObjectParameter("women_id", women_id) :
+                new ObjectParameter("women_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllEnrollmentsById_Result>("getAllEnrollmentsById", women_idParameter);
+        }
+    
+        public virtual ObjectResult<getAllCourses_Result> getAllCourses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllCourses_Result>("getAllCourses");
+        }
+    
+        public virtual ObjectResult<getCourseById_Result> getCourseById(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getCourseById_Result>("getCourseById", idParameter);
+        }
     }
 }

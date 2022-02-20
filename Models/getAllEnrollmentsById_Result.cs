@@ -10,17 +10,15 @@
 namespace AdminModule.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class enrollment
+    public partial class getAllEnrollmentsById_Result
     {
-        public int women_id { get; set; }
-        public int course_id { get; set; }
+        public Nullable<int> women_id { get; set; }
+        public string women_full_name { get; set; }
+        public string women_document { get; set; }
+        public string women_marital_status { get; set; }
+        public string course_name { get; set; }
         public Nullable<System.DateTime> enrollmentdate { get; set; }
         public string approval_status { get; set; }
-        public Nullable<System.DateTime> approval_date { get; set; }
-    
-        public virtual course course { get; set; }
-        public virtual woman woman { get; set; }
     }
 }

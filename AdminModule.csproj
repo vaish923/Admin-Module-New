@@ -233,9 +233,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseDashBoardController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NgoDashBoardController.cs" />
+    <Compile Include="Controllers\WomenDashBoardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +271,18 @@
     <Compile Include="Models\feedback.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\getAllCourses_Result.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getAllEnrollmentsById_Result.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getAllEnrollments_Result.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getCourseById_Result.cs">
+      <DependentUpon>DbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginModal.cs" />
     <Compile Include="Models\ngo.cs">
       <DependentUpon>DbContext.tt</DependentUpon>
@@ -282,6 +296,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -357,7 +372,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\DashBoard\GetWomenList.cshtml" />
     <Content Include="Views\DashBoard\Details.cshtml" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="wwwroot\lib\bootstrap\css\bootstrap-grid.min.css.map" />
@@ -470,6 +484,14 @@
     <Content Include="Views\NgoDashBoard\GetNgoById.cshtml" />
     <Content Include="Views\DashBoard\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\DashBoard\GetAllEnrollments.cshtml" />
+    <Content Include="Views\CourseDashBoard\Index.cshtml" />
+    <Content Include="Views\NgoDashBoard\Index.cshtml" />
+    <Content Include="Views\WomenDashBoard\Index.cshtml" />
+    <Content Include="Views\WomenDashBoard\GetAllEnrollments.cshtml" />
+    <Content Include="Views\WomenDashBoard\GetEnrollmentById.cshtml" />
+    <Content Include="Views\CourseDashBoard\GetAllCourses.cshtml" />
+    <Content Include="Views\CourseDashBoard\GetCourseById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

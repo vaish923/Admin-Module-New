@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AdminModule.Models.getAllEnrollments_Result>
+
+@{
+    ViewBag.Title = "GetAllEnrollments";
+}
+
+<h2>Women Enrollment DashBoard</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.women_full_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.women_document)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.women_marital_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.enrollmentdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.approval_status)
+        </th>
+        <th>
+            Action
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.women_full_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.women_document)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.women_marital_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.enrollmentdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.approval_status)
+        </td>
+        <td>
+          
+            @Html.ActionLink("Details", "GetEnrollmentById", new {  id=item.women_id}) 
+            
+        </td>
+    </tr>
+}
+
+</table>

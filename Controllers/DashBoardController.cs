@@ -13,6 +13,10 @@ namespace AdminModule.Controllers
         // GET: DashBoard
         public ActionResult Index()
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.Session = Session["username"];
             return View();
         }
@@ -71,6 +75,17 @@ namespace AdminModule.Controllers
             }
             
 
+        }
+
+
+        [HttpGet]
+        public ActionResult GetAllEnrollments()
+        {
+            using(var db=new  Women_EmpowerementEntities()){
+                var enrollments = db.getAllEnrollments().ToList();
+                return View(enrollments);
+            }
+         
         }
 
 

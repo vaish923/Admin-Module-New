@@ -24,7 +24,7 @@
     <Property Name="approvedstatus" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="coursecategory1" Relationship="Self.FK__course__courseca__44FF419A" FromRole="course" ToRole="coursecategory" />
     <NavigationProperty Name="Trainer" Relationship="Self.FK__course__trainer___300424B4" FromRole="course" ToRole="Trainer" />
-    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__3E52440B" FromRole="course" ToRole="enrollment" />
+    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__52593CB8" FromRole="course" ToRole="enrollment" />
   </EntityType>
   <EntityType Name="coursecategory">
     <Key>
@@ -41,10 +41,11 @@
     </Key>
     <Property Name="women_id" Type="Int32" Nullable="false" />
     <Property Name="course_id" Type="Int32" Nullable="false" />
-    <Property Name="enrollment_date" Type="DateTime" Precision="0" />
-    <Property Name="approval_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="course" Relationship="Self.FK__enrollmen__cours__3E52440B" FromRole="enrollment" ToRole="course" />
-    <NavigationProperty Name="woman" Relationship="Self.FK__enrollmen__women__3D5E1FD2" FromRole="enrollment" ToRole="women" />
+    <Property Name="enrollmentdate" Type="DateTime" Precision="0" />
+    <Property Name="approval_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="approval_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="course" Relationship="Self.FK__enrollmen__cours__52593CB8" FromRole="enrollment" ToRole="course" />
+    <NavigationProperty Name="woman" Relationship="Self.FK__enrollmen__women__5165187F" FromRole="enrollment" ToRole="women" />
   </EntityType>
   <EntityType Name="feedback">
     <Key>
@@ -105,7 +106,7 @@
     <Property Name="women_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="Boolean" />
     <Property Name="women_marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__women__3D5E1FD2" FromRole="women" ToRole="enrollment" />
+    <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__women__5165187F" FromRole="women" ToRole="enrollment" />
     <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__women___47DBAE45" FromRole="women" ToRole="feedback" />
   </EntityType>
   <Association Name="FK__course__courseca__44FF419A">
@@ -132,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__cours__3E52440B">
+  <Association Name="FK__enrollmen__cours__52593CB8">
     <End Role="course" Type="Self.course" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -144,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__women__3D5E1FD2">
+  <Association Name="FK__enrollmen__women__5165187F">
     <End Role="women" Type="Self.woman" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -197,11 +198,11 @@
       <End Role="Trainer" EntitySet="Trainers" />
       <End Role="course" EntitySet="courses" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__cours__3E52440B" Association="Self.FK__enrollmen__cours__3E52440B">
+    <AssociationSet Name="FK__enrollmen__cours__52593CB8" Association="Self.FK__enrollmen__cours__52593CB8">
       <End Role="course" EntitySet="courses" />
       <End Role="enrollment" EntitySet="enrollments" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__women__3D5E1FD2" Association="Self.FK__enrollmen__women__3D5E1FD2">
+    <AssociationSet Name="FK__enrollmen__women__5165187F" Association="Self.FK__enrollmen__women__5165187F">
       <End Role="women" EntitySet="women" />
       <End Role="enrollment" EntitySet="enrollments" />
     </AssociationSet>
@@ -213,5 +214,57 @@
       <End Role="ngo" EntitySet="ngoes" />
       <End Role="Trainer" EntitySet="Trainers" />
     </AssociationSet>
+    <FunctionImport Name="getAllEnrollments" ReturnType="Collection(Women_EmpowerementModel.getAllEnrollments_Result)" />
+    <FunctionImport Name="getAllEnrollmentsById" ReturnType="Collection(Women_EmpowerementModel.getAllEnrollmentsById_Result)">
+      <Parameter Name="women_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getAllCourses" ReturnType="Collection(Women_EmpowerementModel.getAllCourses_Result)" />
+    <FunctionImport Name="getCourseById" ReturnType="Collection(Women_EmpowerementModel.getCourseById_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="getAllEnrollments_Result">
+    <Property Type="Int32" Name="women_id" Nullable="true" />
+    <Property Type="String" Name="women_full_name" Nullable="true" />
+    <Property Type="String" Name="women_document" Nullable="true" />
+    <Property Type="String" Name="women_marital_status" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="course_name" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="enrollmentdate" Nullable="true" />
+    <Property Type="String" Name="approval_status" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="getAllEnrollmentsById_Result">
+    <Property Type="Int32" Name="women_id" Nullable="true" />
+    <Property Type="String" Name="women_full_name" Nullable="true" />
+    <Property Type="String" Name="women_document" Nullable="true" />
+    <Property Type="String" Name="women_marital_status" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="course_name" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="enrollmentdate" Nullable="true" />
+    <Property Type="String" Name="approval_status" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="getAllCourses_Result">
+    <Property Type="Int32" Name="course_id" Nullable="false" />
+    <Property Type="Int32" Name="ngo_id" Nullable="true" />
+    <Property Type="Int32" Name="trainer_id" Nullable="true" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="course_name" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="course_start_date" Nullable="false" />
+    <Property Type="DateTime" Name="course_end_date" Nullable="false" />
+    <Property Type="String" Name="ngo_name" Nullable="true" />
+    <Property Type="String" Name="trainer_full_name" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="approvedstatus" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="getCourseById_Result">
+    <Property Type="Int32" Name="course_id" Nullable="false" />
+    <Property Type="Int32" Name="ngo_id" Nullable="true" />
+    <Property Type="Int32" Name="trainer_id" Nullable="true" />
+    <Property Type="Int32" Name="category_id" Nullable="true" />
+    <Property Type="String" Name="course_name" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="course_start_date" Nullable="false" />
+    <Property Type="DateTime" Name="course_end_date" Nullable="false" />
+    <Property Type="String" Name="ngo_name" Nullable="true" />
+    <Property Type="String" Name="trainer_full_name" Nullable="true" />
+    <Property Type="String" Name="category_name" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="approvedstatus" Nullable="true" MaxLength="40" />
+  </ComplexType>
 </Schema>

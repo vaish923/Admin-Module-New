@@ -12,12 +12,21 @@ namespace AdminModule.Controllers
         // GET: NgoDashBoard
         public ActionResult Index()
         {
+            if(Session["username"]==null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            ViewBag.Message = "Im in NgoDashboard";
             return View();
         }
 
         [HttpGet]
         public ActionResult GetAllNgoDetails()
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
             {
                 var ngodata = womeEmpoweremetEntities.ngoes.ToList();
@@ -28,6 +37,10 @@ namespace AdminModule.Controllers
         [HttpGet]
         public ActionResult GetNgoById(int id, ngo ngo)
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
             {
                 var ngodata = womeEmpoweremetEntities.ngoes.Find(id);
@@ -38,6 +51,10 @@ namespace AdminModule.Controllers
         [HttpPost]
         public ActionResult GetNgoById(ngo ngo, int id)
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
             {
                 ngo ngodata = womeEmpoweremetEntities.ngoes.Find(id);

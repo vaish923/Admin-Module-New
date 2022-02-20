@@ -37,8 +37,9 @@
     </Key>
     <Property Name="women_id" Type="int" Nullable="false" />
     <Property Name="course_id" Type="int" Nullable="false" />
-    <Property Name="enrollment_date" Type="date" />
-    <Property Name="approval_status" Type="varchar" MaxLength="20" />
+    <Property Name="enrollmentdate" Type="date" />
+    <Property Name="approval_status" Type="varchar" MaxLength="40" />
+    <Property Name="approval_date" Type="date" />
   </EntityType>
   <EntityType Name="feedback">
     <Key>
@@ -120,7 +121,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__cours__3E52440B">
+  <Association Name="FK__enrollmen__cours__52593CB8">
     <End Role="course" Type="Self.course" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -132,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__women__3D5E1FD2">
+  <Association Name="FK__enrollmen__women__5165187F">
     <End Role="women" Type="Self.women" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -168,6 +169,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="getAllCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAllEnrollments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getAllEnrollmentsById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="women_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getCourseById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="Women_EmpowerementModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
@@ -185,11 +194,11 @@
       <End Role="Trainer" EntitySet="Trainer" />
       <End Role="course" EntitySet="course" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__cours__3E52440B" Association="Self.FK__enrollmen__cours__3E52440B">
+    <AssociationSet Name="FK__enrollmen__cours__52593CB8" Association="Self.FK__enrollmen__cours__52593CB8">
       <End Role="course" EntitySet="course" />
       <End Role="enrollment" EntitySet="enrollment" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__women__3D5E1FD2" Association="Self.FK__enrollmen__women__3D5E1FD2">
+    <AssociationSet Name="FK__enrollmen__women__5165187F" Association="Self.FK__enrollmen__women__5165187F">
       <End Role="women" EntitySet="women" />
       <End Role="enrollment" EntitySet="enrollment" />
     </AssociationSet>

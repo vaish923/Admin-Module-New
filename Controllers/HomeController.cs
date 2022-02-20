@@ -66,5 +66,13 @@ namespace AdminModule.Controllers
                 
             }
         }
+
+        public ActionResult Logout(int id=0)
+        {
+            Session["username"] = null;
+            return View("Index");
+        }
+
+        
     }
 }

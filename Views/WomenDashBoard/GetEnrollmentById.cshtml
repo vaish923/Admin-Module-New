@@ -1,0 +1,99 @@
+﻿@model AdminModule.Models.getAllEnrollmentsById_Result
+
+@{
+    ViewBag.Title = "GetEnrollmentById";
+}
+
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.women_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_document)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_document)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.women_marital_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.women_marital_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.course_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enrollmentdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enrollmentdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.approval_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.approval_status)
+        </dd>
+
+    </dl>
+</div>
+
+@using (Html.BeginForm("GetEnrollmentById", "WomenDashBoard", FormMethod.Post))
+{
+    if (ViewBag.Status=="pending")
+    {
+        <input type="submit" name="Approved" value="Approved" />
+        <input type="submit" name="Reject" value="Reject" />
+
+    }
+
+}
+
+
+
+
+
+<p>
+
+    @Html.ActionLink("Back to List", "GetAllEnrollments")
+</p>
+
+@if (@ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript" lang="javascript">
+            window.onload=function(){
+                alert("@ViewBag.SuccessMessage")
+            }
+    </script>
+}

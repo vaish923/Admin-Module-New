@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AdminModule.Models.getAllCourses_Result>
+
+@{
+    ViewBag.Title = "GetAllCourses";
+}
+
+<h2>GetAllCourses</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.course_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trainer_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_start_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.course_end_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngo_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trainer_full_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trainer_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.course_end_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngo_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trainer_full_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category_name)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "GetCourseById", new {  id=item.course_id}) 
+            
+        </td>
+    </tr>
+}
+
+</table>
