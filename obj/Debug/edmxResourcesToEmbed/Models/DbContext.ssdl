@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Women_EmpowerementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="WomenEmpowerementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="admin">
     <Key>
       <PropertyRef Name="admin_id" />
@@ -97,7 +97,7 @@
     <Property Name="status" Type="bit" />
     <Property Name="women_marital_status" Type="varchar" MaxLength="20" />
   </EntityType>
-  <Association Name="FK__course__courseca__44FF419A">
+  <Association Name="FK__course__courseca__5165187F">
     <End Role="coursecategory" Type="Self.coursecategory" Multiplicity="0..1" />
     <End Role="course" Type="Self.course" Multiplicity="*" />
     <ReferentialConstraint>
@@ -109,7 +109,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__course__trainer___300424B4">
+  <Association Name="FK__course__trainer___5070F446">
     <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
     <End Role="course" Type="Self.course" Multiplicity="*" />
     <ReferentialConstraint>
@@ -121,7 +121,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__cours__52593CB8">
+  <Association Name="FK__enrollmen__cours__534D60F1">
     <End Role="course" Type="Self.course" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -133,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__enrollmen__women__5165187F">
+  <Association Name="FK__enrollmen__women__52593CB8">
     <End Role="women" Type="Self.women" Multiplicity="1" />
     <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -145,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__feedback__women___47DBAE45">
+  <Association Name="FK__feedback__women___5441852A">
     <End Role="women" Type="Self.women" Multiplicity="0..1" />
     <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
     <ReferentialConstraint>
@@ -157,7 +157,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trainer__ngo_id__2C3393D0">
+  <Association Name="FK__Trainer__ngo_id__5535A963">
     <End Role="ngo" Type="Self.ngo" Multiplicity="0..1" />
     <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
     <ReferentialConstraint>
@@ -177,7 +177,7 @@
   <Function Name="getCourseById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
-  <EntityContainer Name="Women_EmpowerementModelStoreContainer">
+  <EntityContainer Name="WomenEmpowerementDBModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="coursecategory" EntityType="Self.coursecategory" Schema="dbo" store:Type="Tables" />
@@ -186,27 +186,27 @@
     <EntitySet Name="ngo" EntityType="Self.ngo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="women" EntityType="Self.women" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__course__courseca__44FF419A" Association="Self.FK__course__courseca__44FF419A">
+    <AssociationSet Name="FK__course__courseca__5165187F" Association="Self.FK__course__courseca__5165187F">
       <End Role="coursecategory" EntitySet="coursecategory" />
       <End Role="course" EntitySet="course" />
     </AssociationSet>
-    <AssociationSet Name="FK__course__trainer___300424B4" Association="Self.FK__course__trainer___300424B4">
+    <AssociationSet Name="FK__course__trainer___5070F446" Association="Self.FK__course__trainer___5070F446">
       <End Role="Trainer" EntitySet="Trainer" />
       <End Role="course" EntitySet="course" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__cours__52593CB8" Association="Self.FK__enrollmen__cours__52593CB8">
+    <AssociationSet Name="FK__enrollmen__cours__534D60F1" Association="Self.FK__enrollmen__cours__534D60F1">
       <End Role="course" EntitySet="course" />
       <End Role="enrollment" EntitySet="enrollment" />
     </AssociationSet>
-    <AssociationSet Name="FK__enrollmen__women__5165187F" Association="Self.FK__enrollmen__women__5165187F">
+    <AssociationSet Name="FK__enrollmen__women__52593CB8" Association="Self.FK__enrollmen__women__52593CB8">
       <End Role="women" EntitySet="women" />
       <End Role="enrollment" EntitySet="enrollment" />
     </AssociationSet>
-    <AssociationSet Name="FK__feedback__women___47DBAE45" Association="Self.FK__feedback__women___47DBAE45">
+    <AssociationSet Name="FK__feedback__women___5441852A" Association="Self.FK__feedback__women___5441852A">
       <End Role="women" EntitySet="women" />
       <End Role="feedback" EntitySet="feedback" />
     </AssociationSet>
-    <AssociationSet Name="FK__Trainer__ngo_id__2C3393D0" Association="Self.FK__Trainer__ngo_id__2C3393D0">
+    <AssociationSet Name="FK__Trainer__ngo_id__5535A963" Association="Self.FK__Trainer__ngo_id__5535A963">
       <End Role="ngo" EntitySet="ngo" />
       <End Role="Trainer" EntitySet="Trainer" />
     </AssociationSet>

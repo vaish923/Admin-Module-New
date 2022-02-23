@@ -4,61 +4,146 @@
     ViewBag.Title = "GetAllEnrollments";
 }
 
-<h2>Women Enrollment DashBoard</h2>
+
+<link href="~/Css/Style.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>WomenEnrollment <b>Dashboard</b></h2>
+                    </div>
+                    
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        
+                        <th>Name</th>
+                        <th style="margin-left:10px;">Martial Status</th>
+                        <th>Course Name</th>
+                        <th>Enrollment Date</th>
+                        <th>Approval Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.women_full_name)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.women_marital_status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.course_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.enrollmentdate)
+                            </td>
+                            <td>
+                                @if (item.approval_status == "pending")
+                                {
+                                    @Html.DisplayFor(modelItem => item.approval_status, new { @class = "Pending" })
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.approval_status, new { @class = "Approve" })
+
+                                }
+                            </td>
+
+              
+                           
+                            <td>
+
+                                @Html.ActionLink("Details", "GetEnrollmentById", new { id = item.women_id })
+
+                            </td>
+                        </tr>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.women_full_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.women_document)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.women_marital_status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.course_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.enrollmentdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.approval_status)
-        </th>
-        <th>
-            Action
-        </th>
-        <th></th>
-    </tr>
+                    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.women_full_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.women_document)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.women_marital_status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.course_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.enrollmentdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.approval_status)
-        </td>
-        <td>
-          
-            @Html.ActionLink("Details", "GetEnrollmentById", new {  id=item.women_id}) 
-            
-        </td>
-    </tr>
-}
+
+
 
 </table>
+        </div>
+    </div>
+</body>
+@*<div>
+
+        <h2>Women Enrollment DashBoard</h2>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.women_full_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.women_document)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.women_marital_status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.course_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.enrollmentdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.approval_status)
+                </th>
+                <th>
+                    Action
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.women_full_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.women_document)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.women_marital_status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.course_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.enrollmentdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.approval_status)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Details", "GetEnrollmentById", new { id = item.women_id })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@

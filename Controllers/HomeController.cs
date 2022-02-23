@@ -10,7 +10,7 @@ namespace AdminModule.Controllers
 {
     public class HomeController : Controller
     {
-        private string constring = @"Data Source=DESKTOP-VEA4621\SQLEXPRESS;Initial Catalog=Women_Empowerement;Integrated Security=True";
+        private string constring = @"Data Source=DESKTOP-309A2C2\SQLEXPRESS;Initial Catalog=WomenEmpowermentDB;User ID=sa;Password=newuser123#";
         public ActionResult Index()
         {
             return View();
@@ -69,8 +69,9 @@ namespace AdminModule.Controllers
 
         public ActionResult Logout(int id=0)
         {
-            Session["username"] = null;
-            return View("Index");
+            //Session["username"] = null;
+            Session.RemoveAll();
+            return RedirectToAction("Login", "Home");
         }
 
         

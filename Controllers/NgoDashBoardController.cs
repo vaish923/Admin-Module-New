@@ -27,7 +27,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
+            using (Women_EmpowermentEntities womeEmpoweremetEntities = new Women_EmpowermentEntities())
             {
                 var ngodata = womeEmpoweremetEntities.ngoes.ToList();
                 return View(ngodata);
@@ -41,7 +41,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
+            using (Women_EmpowermentEntities womeEmpoweremetEntities = new Women_EmpowermentEntities())
             {
                 var ngodata = womeEmpoweremetEntities.ngoes.Find(id);
                 ViewBag.Status = ngodata.approvedstatus;
@@ -55,7 +55,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (Women_EmpowerementEntities womeEmpoweremetEntities = new Women_EmpowerementEntities())
+            using (Women_EmpowermentEntities womeEmpoweremetEntities = new Women_EmpowermentEntities())
             {
                 ngo ngodata = womeEmpoweremetEntities.ngoes.Find(id);
                 ViewBag.Status = ngodata.approvedstatus;

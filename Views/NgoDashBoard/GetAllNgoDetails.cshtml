@@ -4,87 +4,158 @@
     ViewBag.Title = "GetAllNgoDetails";
 }
 
+<link href="~/Css/Style.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>NGO <b>Dashboard</b></h2>
+                    </div>
+
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+
+                        <th> NGO Name</th>
+                        <th>Contact Number</th>
+                        <th>Email</th>
+                        <th>Approval Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ngo_name)
+                        </td>
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.ngo_contact_number)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ngo_email)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.approvedstatus)
+                        </td>
+
+                        <td>
+
+                            @Html.ActionLink("Details", "GetNgoById", new { id = item.ngo_id })
+
+                        </td>
+                    </tr>
+
+
+                    }
 
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contact_person)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_contact_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_city)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_state)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ngo_email)
-        </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.approvedstatus)
-        </th>
-        <th>
-            Action
-        </th>
-        <th></th>
-    </tr>
+            </table>
+        </div>
+    </div>
+</body>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contact_person)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_contact_number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_state)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngo_email)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.approvedstatus)
-        </td>
-        <td>
-            
-            @Html.ActionLink("Details", "GetNgoById", new {  id=item.ngo_id }) 
-          
-        </td>
-    </tr>
-}
 
-</table>
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact_person)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_contact_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_state)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngo_email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.approvedstatus)
+            </th>
+            <th>
+                Action
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact_person)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_contact_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngo_email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.approvedstatus)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "GetNgoById", new {  id=item.ngo_id })
+
+            </td>
+        </tr>
+    }
+
+    </table>*@

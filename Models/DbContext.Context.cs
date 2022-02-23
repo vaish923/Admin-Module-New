@@ -15,10 +15,10 @@ namespace AdminModule.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Women_EmpowerementEntities : DbContext
+    public partial class Women_EmpowermentEntities : DbContext
     {
-        public Women_EmpowerementEntities()
-            : base("name=Women_EmpowerementEntities")
+        public Women_EmpowermentEntities()
+            : base("name=Women_EmpowermentEntities")
         {
         }
     
@@ -36,6 +36,11 @@ namespace AdminModule.Models
         public virtual DbSet<Trainer> Trainers { get; set; }
         public virtual DbSet<woman> women { get; set; }
     
+        public virtual ObjectResult<getAllCourses_Result> getAllCourses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllCourses_Result>("getAllCourses");
+        }
+    
         public virtual ObjectResult<getAllEnrollments_Result> getAllEnrollments()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllEnrollments_Result>("getAllEnrollments");
@@ -48,11 +53,6 @@ namespace AdminModule.Models
                 new ObjectParameter("women_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllEnrollmentsById_Result>("getAllEnrollmentsById", women_idParameter);
-        }
-    
-        public virtual ObjectResult<getAllCourses_Result> getAllCourses()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getAllCourses_Result>("getAllCourses");
         }
     
         public virtual ObjectResult<getCourseById_Result> getCourseById(Nullable<int> id)

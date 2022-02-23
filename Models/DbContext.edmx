@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Women_EmpowerementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WomenEmpowerementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -102,7 +102,7 @@
           <Property Name="status" Type="bit" />
           <Property Name="women_marital_status" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK__course__courseca__44FF419A">
+        <Association Name="FK__course__courseca__5165187F">
           <End Role="coursecategory" Type="Self.coursecategory" Multiplicity="0..1" />
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +114,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__course__trainer___300424B4">
+        <Association Name="FK__course__trainer___5070F446">
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +126,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__cours__52593CB8">
+        <Association Name="FK__enrollmen__cours__534D60F1">
           <End Role="course" Type="Self.course" Multiplicity="1" />
           <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__women__5165187F">
+        <Association Name="FK__enrollmen__women__52593CB8">
           <End Role="women" Type="Self.women" Multiplicity="1" />
           <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__feedback__women___47DBAE45">
+        <Association Name="FK__feedback__women___5441852A">
           <End Role="women" Type="Self.women" Multiplicity="0..1" />
           <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trainer__ngo_id__2C3393D0">
+        <Association Name="FK__Trainer__ngo_id__5535A963">
           <End Role="ngo" Type="Self.ngo" Multiplicity="0..1" />
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +182,7 @@
         <Function Name="getCourseById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="Women_EmpowerementModelStoreContainer">
+        <EntityContainer Name="WomenEmpowerementDBModelStoreContainer">
           <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="course" EntityType="Self.course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="coursecategory" EntityType="Self.coursecategory" Schema="dbo" store:Type="Tables" />
@@ -191,35 +191,36 @@
           <EntitySet Name="ngo" EntityType="Self.ngo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="women" EntityType="Self.women" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__course__courseca__44FF419A" Association="Self.FK__course__courseca__44FF419A">
+          <AssociationSet Name="FK__course__courseca__5165187F" Association="Self.FK__course__courseca__5165187F">
             <End Role="coursecategory" EntitySet="coursecategory" />
             <End Role="course" EntitySet="course" />
           </AssociationSet>
-          <AssociationSet Name="FK__course__trainer___300424B4" Association="Self.FK__course__trainer___300424B4">
+          <AssociationSet Name="FK__course__trainer___5070F446" Association="Self.FK__course__trainer___5070F446">
             <End Role="Trainer" EntitySet="Trainer" />
             <End Role="course" EntitySet="course" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__cours__52593CB8" Association="Self.FK__enrollmen__cours__52593CB8">
+          <AssociationSet Name="FK__enrollmen__cours__534D60F1" Association="Self.FK__enrollmen__cours__534D60F1">
             <End Role="course" EntitySet="course" />
             <End Role="enrollment" EntitySet="enrollment" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__women__5165187F" Association="Self.FK__enrollmen__women__5165187F">
+          <AssociationSet Name="FK__enrollmen__women__52593CB8" Association="Self.FK__enrollmen__women__52593CB8">
             <End Role="women" EntitySet="women" />
             <End Role="enrollment" EntitySet="enrollment" />
           </AssociationSet>
-          <AssociationSet Name="FK__feedback__women___47DBAE45" Association="Self.FK__feedback__women___47DBAE45">
+          <AssociationSet Name="FK__feedback__women___5441852A" Association="Self.FK__feedback__women___5441852A">
             <End Role="women" EntitySet="women" />
             <End Role="feedback" EntitySet="feedback" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trainer__ngo_id__2C3393D0" Association="Self.FK__Trainer__ngo_id__2C3393D0">
+          <AssociationSet Name="FK__Trainer__ngo_id__5535A963" Association="Self.FK__Trainer__ngo_id__5535A963">
             <End Role="ngo" EntitySet="ngo" />
             <End Role="Trainer" EntitySet="Trainer" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Women_EmpowerementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="WomenEmpowerementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -242,9 +243,9 @@
           <Property Name="status" Type="Boolean" />
           <Property Name="coursecategory" Type="Int32" />
           <Property Name="approvedstatus" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="coursecategory1" Relationship="Self.FK__course__courseca__44FF419A" FromRole="course" ToRole="coursecategory" />
-          <NavigationProperty Name="Trainer" Relationship="Self.FK__course__trainer___300424B4" FromRole="course" ToRole="Trainer" />
-          <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__52593CB8" FromRole="course" ToRole="enrollment" />
+          <NavigationProperty Name="coursecategory1" Relationship="Self.FK__course__courseca__5165187F" FromRole="course" ToRole="coursecategory" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK__course__trainer___5070F446" FromRole="course" ToRole="Trainer" />
+          <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__534D60F1" FromRole="course" ToRole="enrollment" />
         </EntityType>
         <EntityType Name="coursecategory">
           <Key>
@@ -252,7 +253,7 @@
           </Key>
           <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="courses" Relationship="Self.FK__course__courseca__44FF419A" FromRole="coursecategory" ToRole="course" />
+          <NavigationProperty Name="courses" Relationship="Self.FK__course__courseca__5165187F" FromRole="coursecategory" ToRole="course" />
         </EntityType>
         <EntityType Name="enrollment">
           <Key>
@@ -264,8 +265,8 @@
           <Property Name="enrollmentdate" Type="DateTime" Precision="0" />
           <Property Name="approval_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="approval_date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="course" Relationship="Self.FK__enrollmen__cours__52593CB8" FromRole="enrollment" ToRole="course" />
-          <NavigationProperty Name="woman" Relationship="Self.FK__enrollmen__women__5165187F" FromRole="enrollment" ToRole="women" />
+          <NavigationProperty Name="course" Relationship="Self.FK__enrollmen__cours__534D60F1" FromRole="enrollment" ToRole="course" />
+          <NavigationProperty Name="woman" Relationship="Self.FK__enrollmen__women__52593CB8" FromRole="enrollment" ToRole="women" />
         </EntityType>
         <EntityType Name="feedback">
           <Key>
@@ -275,7 +276,7 @@
           <Property Name="feedback_date" Type="DateTime" Precision="0" />
           <Property Name="feedback_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="women_id" Type="Int32" />
-          <NavigationProperty Name="woman" Relationship="Self.FK__feedback__women___47DBAE45" FromRole="feedback" ToRole="women" />
+          <NavigationProperty Name="woman" Relationship="Self.FK__feedback__women___5441852A" FromRole="feedback" ToRole="women" />
         </EntityType>
         <EntityType Name="ngo">
           <Key>
@@ -294,7 +295,7 @@
           <Property Name="ngo_supportingdocument" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Boolean" />
           <Property Name="approvedstatus" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Trainers" Relationship="Self.FK__Trainer__ngo_id__2C3393D0" FromRole="ngo" ToRole="Trainer" />
+          <NavigationProperty Name="Trainers" Relationship="Self.FK__Trainer__ngo_id__5535A963" FromRole="ngo" ToRole="Trainer" />
         </EntityType>
         <EntityType Name="Trainer">
           <Key>
@@ -305,8 +306,8 @@
           <Property Name="trainer_contact_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="trainer_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ngo_id" Type="Int32" />
-          <NavigationProperty Name="courses" Relationship="Self.FK__course__trainer___300424B4" FromRole="Trainer" ToRole="course" />
-          <NavigationProperty Name="ngo" Relationship="Self.FK__Trainer__ngo_id__2C3393D0" FromRole="Trainer" ToRole="ngo" />
+          <NavigationProperty Name="courses" Relationship="Self.FK__course__trainer___5070F446" FromRole="Trainer" ToRole="course" />
+          <NavigationProperty Name="ngo" Relationship="Self.FK__Trainer__ngo_id__5535A963" FromRole="Trainer" ToRole="ngo" />
         </EntityType>
         <EntityType Name="woman">
           <Key>
@@ -326,10 +327,10 @@
           <Property Name="women_document" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Boolean" />
           <Property Name="women_marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__women__5165187F" FromRole="women" ToRole="enrollment" />
-          <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__women___47DBAE45" FromRole="women" ToRole="feedback" />
+          <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__women__52593CB8" FromRole="women" ToRole="enrollment" />
+          <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__women___5441852A" FromRole="women" ToRole="feedback" />
         </EntityType>
-        <Association Name="FK__course__courseca__44FF419A">
+        <Association Name="FK__course__courseca__5165187F">
           <End Role="coursecategory" Type="Self.coursecategory" Multiplicity="0..1" />
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,7 +342,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__course__trainer___300424B4">
+        <Association Name="FK__course__trainer___5070F446">
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
           <End Role="course" Type="Self.course" Multiplicity="*" />
           <ReferentialConstraint>
@@ -353,7 +354,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__cours__52593CB8">
+        <Association Name="FK__enrollmen__cours__534D60F1">
           <End Role="course" Type="Self.course" Multiplicity="1" />
           <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -365,7 +366,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__women__5165187F">
+        <Association Name="FK__enrollmen__women__52593CB8">
           <End Role="women" Type="Self.woman" Multiplicity="1" />
           <End Role="enrollment" Type="Self.enrollment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -377,7 +378,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__feedback__women___47DBAE45">
+        <Association Name="FK__feedback__women___5441852A">
           <End Role="women" Type="Self.woman" Multiplicity="0..1" />
           <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
           <ReferentialConstraint>
@@ -389,7 +390,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trainer__ngo_id__2C3393D0">
+        <Association Name="FK__Trainer__ngo_id__5535A963">
           <End Role="ngo" Type="Self.ngo" Multiplicity="0..1" />
           <End Role="Trainer" Type="Self.Trainer" Multiplicity="*" />
           <ReferentialConstraint>
@@ -401,7 +402,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Women_EmpowerementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Women_EmpowermentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="admins" EntityType="Self.admin" />
           <EntitySet Name="courses" EntityType="Self.course" />
           <EntitySet Name="coursecategories" EntityType="Self.coursecategory" />
@@ -410,39 +411,52 @@
           <EntitySet Name="ngoes" EntityType="Self.ngo" />
           <EntitySet Name="Trainers" EntityType="Self.Trainer" />
           <EntitySet Name="women" EntityType="Self.woman" />
-          <AssociationSet Name="FK__course__courseca__44FF419A" Association="Self.FK__course__courseca__44FF419A">
+          <AssociationSet Name="FK__course__courseca__5165187F" Association="Self.FK__course__courseca__5165187F">
             <End Role="coursecategory" EntitySet="coursecategories" />
             <End Role="course" EntitySet="courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__course__trainer___300424B4" Association="Self.FK__course__trainer___300424B4">
+          <AssociationSet Name="FK__course__trainer___5070F446" Association="Self.FK__course__trainer___5070F446">
             <End Role="Trainer" EntitySet="Trainers" />
             <End Role="course" EntitySet="courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__cours__52593CB8" Association="Self.FK__enrollmen__cours__52593CB8">
+          <AssociationSet Name="FK__enrollmen__cours__534D60F1" Association="Self.FK__enrollmen__cours__534D60F1">
             <End Role="course" EntitySet="courses" />
             <End Role="enrollment" EntitySet="enrollments" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__women__5165187F" Association="Self.FK__enrollmen__women__5165187F">
+          <AssociationSet Name="FK__enrollmen__women__52593CB8" Association="Self.FK__enrollmen__women__52593CB8">
             <End Role="women" EntitySet="women" />
             <End Role="enrollment" EntitySet="enrollments" />
           </AssociationSet>
-          <AssociationSet Name="FK__feedback__women___47DBAE45" Association="Self.FK__feedback__women___47DBAE45">
+          <AssociationSet Name="FK__feedback__women___5441852A" Association="Self.FK__feedback__women___5441852A">
             <End Role="women" EntitySet="women" />
             <End Role="feedback" EntitySet="feedbacks" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trainer__ngo_id__2C3393D0" Association="Self.FK__Trainer__ngo_id__2C3393D0">
+          <AssociationSet Name="FK__Trainer__ngo_id__5535A963" Association="Self.FK__Trainer__ngo_id__5535A963">
             <End Role="ngo" EntitySet="ngoes" />
             <End Role="Trainer" EntitySet="Trainers" />
           </AssociationSet>
-          <FunctionImport Name="getAllEnrollments" ReturnType="Collection(Women_EmpowerementModel.getAllEnrollments_Result)" />
-          <FunctionImport Name="getAllEnrollmentsById" ReturnType="Collection(Women_EmpowerementModel.getAllEnrollmentsById_Result)">
-          <Parameter Name="women_id" Mode="In" Type="Int32" />
+          <FunctionImport Name="getAllCourses" ReturnType="Collection(WomenEmpowerementDBModel.getAllCourses_Result)" />
+          <FunctionImport Name="getAllEnrollments" ReturnType="Collection(WomenEmpowerementDBModel.getAllEnrollments_Result)" />
+          <FunctionImport Name="getAllEnrollmentsById" ReturnType="Collection(WomenEmpowerementDBModel.getAllEnrollmentsById_Result)">
+            <Parameter Name="women_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="getAllCourses" ReturnType="Collection(Women_EmpowerementModel.getAllCourses_Result)" />
-          <FunctionImport Name="getCourseById" ReturnType="Collection(Women_EmpowerementModel.getCourseById_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+          <FunctionImport Name="getCourseById" ReturnType="Collection(WomenEmpowerementDBModel.getCourseById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="getAllCourses_Result">
+          <Property Type="Int32" Name="course_id" Nullable="false" />
+          <Property Type="Int32" Name="ngo_id" Nullable="true" />
+          <Property Type="Int32" Name="trainer_id" Nullable="true" />
+          <Property Type="Int32" Name="category_id" Nullable="true" />
+          <Property Type="String" Name="course_name" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="course_start_date" Nullable="false" />
+          <Property Type="DateTime" Name="course_end_date" Nullable="false" />
+          <Property Type="String" Name="ngo_name" Nullable="true" />
+          <Property Type="String" Name="trainer_full_name" Nullable="true" />
+          <Property Type="String" Name="category_name" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="approvedstatus" Nullable="true" MaxLength="40" />
+        </ComplexType>
         <ComplexType Name="getAllEnrollments_Result">
           <Property Type="Int32" Name="women_id" Nullable="true" />
           <Property Type="String" Name="women_full_name" Nullable="true" />
@@ -460,19 +474,6 @@
           <Property Type="String" Name="course_name" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="enrollmentdate" Nullable="true" />
           <Property Type="String" Name="approval_status" Nullable="true" MaxLength="40" />
-        </ComplexType>
-        <ComplexType Name="getAllCourses_Result">
-          <Property Type="Int32" Name="course_id" Nullable="false" />
-          <Property Type="Int32" Name="ngo_id" Nullable="true" />
-          <Property Type="Int32" Name="trainer_id" Nullable="true" />
-          <Property Type="Int32" Name="category_id" Nullable="true" />
-          <Property Type="String" Name="course_name" Nullable="false" MaxLength="100" />
-          <Property Type="DateTime" Name="course_start_date" Nullable="false" />
-          <Property Type="DateTime" Name="course_end_date" Nullable="false" />
-          <Property Type="String" Name="ngo_name" Nullable="true" />
-          <Property Type="String" Name="trainer_full_name" Nullable="true" />
-          <Property Type="String" Name="category_name" Nullable="true" MaxLength="40" />
-          <Property Type="String" Name="approvedstatus" Nullable="true" MaxLength="40" />
         </ComplexType>
         <ComplexType Name="getCourseById_Result">
           <Property Type="Int32" Name="course_id" Nullable="false" />
@@ -492,9 +493,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Women_EmpowerementModelStoreContainer" CdmEntityContainer="Women_EmpowerementEntities">
+        <EntityContainerMapping StorageEntityContainer="WomenEmpowerementDBModelStoreContainer" CdmEntityContainer="Women_EmpowermentEntities">
           <EntitySetMapping Name="admins">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.admin">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.admin">
               <MappingFragment StoreEntitySet="admin">
                 <ScalarProperty Name="admin_id" ColumnName="admin_id" />
                 <ScalarProperty Name="admin_password" ColumnName="admin_password" />
@@ -502,7 +503,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="courses">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.course">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.course">
               <MappingFragment StoreEntitySet="course">
                 <ScalarProperty Name="course_id" ColumnName="course_id" />
                 <ScalarProperty Name="course_name" ColumnName="course_name" />
@@ -519,7 +520,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="coursecategories">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.coursecategory">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.coursecategory">
               <MappingFragment StoreEntitySet="coursecategory">
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
@@ -527,7 +528,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="enrollments">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.enrollment">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.enrollment">
               <MappingFragment StoreEntitySet="enrollment">
                 <ScalarProperty Name="women_id" ColumnName="women_id" />
                 <ScalarProperty Name="course_id" ColumnName="course_id" />
@@ -538,7 +539,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="feedbacks">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.feedback">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.feedback">
               <MappingFragment StoreEntitySet="feedback">
                 <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
                 <ScalarProperty Name="feedback_date" ColumnName="feedback_date" />
@@ -548,7 +549,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ngoes">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.ngo">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.ngo">
               <MappingFragment StoreEntitySet="ngo">
                 <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
                 <ScalarProperty Name="ngo_name" ColumnName="ngo_name" />
@@ -567,7 +568,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Trainers">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.Trainer">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.Trainer">
               <MappingFragment StoreEntitySet="Trainer">
                 <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
                 <ScalarProperty Name="trainer_full_name" ColumnName="trainer_full_name" />
@@ -578,7 +579,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="women">
-            <EntityTypeMapping TypeName="Women_EmpowerementModel.woman">
+            <EntityTypeMapping TypeName="WomenEmpowerementDBModel.woman">
               <MappingFragment StoreEntitySet="women">
                 <ScalarProperty Name="women_id" ColumnName="women_id" />
                 <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
@@ -597,35 +598,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getAllEnrollments" FunctionName="Women_EmpowerementModel.Store.getAllEnrollments">
+          <FunctionImportMapping FunctionImportName="getAllCourses" FunctionName="WomenEmpowerementDBModel.Store.getAllCourses">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllEnrollments_Result">
-                <ScalarProperty Name="women_id" ColumnName="women_id" />
-                <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
-                <ScalarProperty Name="women_document" ColumnName="women_document" />
-                <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
-                <ScalarProperty Name="course_name" ColumnName="course_name" />
-                <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
-                <ScalarProperty Name="approval_status" ColumnName="approval_status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getAllEnrollmentsById" FunctionName="Women_EmpowerementModel.Store.getAllEnrollmentsById">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllEnrollmentsById_Result">
-                <ScalarProperty Name="women_id" ColumnName="women_id" />
-                <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
-                <ScalarProperty Name="women_document" ColumnName="women_document" />
-                <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
-                <ScalarProperty Name="course_name" ColumnName="course_name" />
-                <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
-                <ScalarProperty Name="approval_status" ColumnName="approval_status" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getAllCourses" FunctionName="Women_EmpowerementModel.Store.getAllCourses">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllCourses_Result">
+              <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllCourses_Result">
                 <ScalarProperty Name="course_id" ColumnName="course_id" />
                 <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
                 <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
@@ -640,9 +615,35 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getCourseById" FunctionName="Women_EmpowerementModel.Store.getCourseById">
+          <FunctionImportMapping FunctionImportName="getAllEnrollments" FunctionName="WomenEmpowerementDBModel.Store.getAllEnrollments">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Women_EmpowerementModel.getCourseById_Result">
+              <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllEnrollments_Result">
+                <ScalarProperty Name="women_id" ColumnName="women_id" />
+                <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
+                <ScalarProperty Name="women_document" ColumnName="women_document" />
+                <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
+                <ScalarProperty Name="approval_status" ColumnName="approval_status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getAllEnrollmentsById" FunctionName="WomenEmpowerementDBModel.Store.getAllEnrollmentsById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllEnrollmentsById_Result">
+                <ScalarProperty Name="women_id" ColumnName="women_id" />
+                <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
+                <ScalarProperty Name="women_document" ColumnName="women_document" />
+                <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
+                <ScalarProperty Name="course_name" ColumnName="course_name" />
+                <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
+                <ScalarProperty Name="approval_status" ColumnName="approval_status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getCourseById" FunctionName="WomenEmpowerementDBModel.Store.getCourseById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getCourseById_Result">
                 <ScalarProperty Name="course_id" ColumnName="course_id" />
                 <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
                 <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />

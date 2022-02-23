@@ -26,7 +26,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (Women_EmpowerementEntities db=new Women_EmpowerementEntities())
+            using (Women_EmpowermentEntities db=new Women_EmpowermentEntities())
             {
                 var coursedata = db.getAllCourses().ToList();
                 return View(coursedata);
@@ -41,7 +41,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (Women_EmpowerementEntities db = new Women_EmpowerementEntities())
+            using (Women_EmpowermentEntities db = new Women_EmpowermentEntities())
             {
                 var coursedata = db.getCourseById(id).FirstOrDefault();
                 ViewBag.Status =Convert.ToString(coursedata.approvedstatus);
@@ -57,7 +57,7 @@ namespace AdminModule.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            using(Women_EmpowerementEntities db=new Women_EmpowerementEntities())
+            using(Women_EmpowermentEntities db=new Women_EmpowermentEntities())
             {
                 var course = db.courses.Find(id);
 

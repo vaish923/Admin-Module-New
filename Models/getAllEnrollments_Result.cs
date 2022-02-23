@@ -10,7 +10,8 @@
 namespace AdminModule.Models
 {
     using System;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class getAllEnrollments_Result
     {
         public Nullable<int> women_id { get; set; }
@@ -18,6 +19,7 @@ namespace AdminModule.Models
         public string women_document { get; set; }
         public string women_marital_status { get; set; }
         public string course_name { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> enrollmentdate { get; set; }
         public string approval_status { get; set; }
     }

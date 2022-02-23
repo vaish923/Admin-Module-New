@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="25db2f2f44144fe7953b231a5d3340e1" Name="Diagram1">
-        <EntityTypeShape EntityType="Women_EmpowerementModel.admin" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.course" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.coursecategory" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.enrollment" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.feedback" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.ngo" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.Trainer" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Women_EmpowerementModel.woman" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__course__courseca__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__course__trainer___300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__enrollmen__cours__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__enrollmen__women__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__feedback__women___47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="Women_EmpowerementModel.FK__Trainer__ngo_id__2C3393D0" ManuallyRouted="false" />
+      <Diagram DiagramId="988ec575d6d347118b8592b11dd73786" Name="Diagram1">
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.admin" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.course" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.coursecategory" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.enrollment" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.feedback" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.ngo" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.Trainer" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WomenEmpowerementDBModel.woman" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__course__courseca__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__course__trainer___5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__enrollmen__cours__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__enrollmen__women__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__feedback__women___5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="WomenEmpowerementDBModel.FK__Trainer__ngo_id__5535A963" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

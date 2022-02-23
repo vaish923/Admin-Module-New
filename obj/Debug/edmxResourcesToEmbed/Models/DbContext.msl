@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Women_EmpowerementModelStoreContainer" CdmEntityContainer="Women_EmpowerementEntities">
+  <EntityContainerMapping StorageEntityContainer="WomenEmpowerementDBModelStoreContainer" CdmEntityContainer="Women_EmpowermentEntities">
     <EntitySetMapping Name="admins">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.admin">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.admin">
         <MappingFragment StoreEntitySet="admin">
           <ScalarProperty Name="admin_id" ColumnName="admin_id" />
           <ScalarProperty Name="admin_password" ColumnName="admin_password" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="courses">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.course">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.course">
         <MappingFragment StoreEntitySet="course">
           <ScalarProperty Name="course_id" ColumnName="course_id" />
           <ScalarProperty Name="course_name" ColumnName="course_name" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="coursecategories">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.coursecategory">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.coursecategory">
         <MappingFragment StoreEntitySet="coursecategory">
           <ScalarProperty Name="category_id" ColumnName="category_id" />
           <ScalarProperty Name="category_name" ColumnName="category_name" />
@@ -35,7 +35,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="enrollments">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.enrollment">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.enrollment">
         <MappingFragment StoreEntitySet="enrollment">
           <ScalarProperty Name="women_id" ColumnName="women_id" />
           <ScalarProperty Name="course_id" ColumnName="course_id" />
@@ -46,7 +46,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="feedbacks">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.feedback">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.feedback">
         <MappingFragment StoreEntitySet="feedback">
           <ScalarProperty Name="feedback_id" ColumnName="feedback_id" />
           <ScalarProperty Name="feedback_date" ColumnName="feedback_date" />
@@ -56,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ngoes">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.ngo">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.ngo">
         <MappingFragment StoreEntitySet="ngo">
           <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
           <ScalarProperty Name="ngo_name" ColumnName="ngo_name" />
@@ -75,7 +75,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Trainers">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.Trainer">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.Trainer">
         <MappingFragment StoreEntitySet="Trainer">
           <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
           <ScalarProperty Name="trainer_full_name" ColumnName="trainer_full_name" />
@@ -86,7 +86,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="women">
-      <EntityTypeMapping TypeName="Women_EmpowerementModel.woman">
+      <EntityTypeMapping TypeName="WomenEmpowerementDBModel.woman">
         <MappingFragment StoreEntitySet="women">
           <ScalarProperty Name="women_id" ColumnName="women_id" />
           <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
@@ -105,35 +105,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="getAllEnrollments" FunctionName="Women_EmpowerementModel.Store.getAllEnrollments">
+    <FunctionImportMapping FunctionImportName="getAllCourses" FunctionName="WomenEmpowerementDBModel.Store.getAllCourses">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllEnrollments_Result">
-          <ScalarProperty Name="women_id" ColumnName="women_id" />
-          <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
-          <ScalarProperty Name="women_document" ColumnName="women_document" />
-          <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
-          <ScalarProperty Name="course_name" ColumnName="course_name" />
-          <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
-          <ScalarProperty Name="approval_status" ColumnName="approval_status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getAllEnrollmentsById" FunctionName="Women_EmpowerementModel.Store.getAllEnrollmentsById">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllEnrollmentsById_Result">
-          <ScalarProperty Name="women_id" ColumnName="women_id" />
-          <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
-          <ScalarProperty Name="women_document" ColumnName="women_document" />
-          <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
-          <ScalarProperty Name="course_name" ColumnName="course_name" />
-          <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
-          <ScalarProperty Name="approval_status" ColumnName="approval_status" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getAllCourses" FunctionName="Women_EmpowerementModel.Store.getAllCourses">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Women_EmpowerementModel.getAllCourses_Result">
+        <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllCourses_Result">
           <ScalarProperty Name="course_id" ColumnName="course_id" />
           <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
           <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />
@@ -148,9 +122,35 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getCourseById" FunctionName="Women_EmpowerementModel.Store.getCourseById">
+    <FunctionImportMapping FunctionImportName="getAllEnrollments" FunctionName="WomenEmpowerementDBModel.Store.getAllEnrollments">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="Women_EmpowerementModel.getCourseById_Result">
+        <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllEnrollments_Result">
+          <ScalarProperty Name="women_id" ColumnName="women_id" />
+          <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
+          <ScalarProperty Name="women_document" ColumnName="women_document" />
+          <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
+          <ScalarProperty Name="course_name" ColumnName="course_name" />
+          <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
+          <ScalarProperty Name="approval_status" ColumnName="approval_status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getAllEnrollmentsById" FunctionName="WomenEmpowerementDBModel.Store.getAllEnrollmentsById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getAllEnrollmentsById_Result">
+          <ScalarProperty Name="women_id" ColumnName="women_id" />
+          <ScalarProperty Name="women_full_name" ColumnName="women_full_name" />
+          <ScalarProperty Name="women_document" ColumnName="women_document" />
+          <ScalarProperty Name="women_marital_status" ColumnName="women_marital_status" />
+          <ScalarProperty Name="course_name" ColumnName="course_name" />
+          <ScalarProperty Name="enrollmentdate" ColumnName="enrollmentdate" />
+          <ScalarProperty Name="approval_status" ColumnName="approval_status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getCourseById" FunctionName="WomenEmpowerementDBModel.Store.getCourseById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WomenEmpowerementDBModel.getCourseById_Result">
           <ScalarProperty Name="course_id" ColumnName="course_id" />
           <ScalarProperty Name="ngo_id" ColumnName="ngo_id" />
           <ScalarProperty Name="trainer_id" ColumnName="trainer_id" />

@@ -21,72 +21,72 @@ namespace AdminModule.Controllers
             return View();
         }
 
-        [Route("DashBoard/GetWomenList")]
-        public ActionResult GetWomenList()
-        {
-            using(Women_EmpowerementEntities women_Empowerement=new Women_EmpowerementEntities())
-            {
-                var womenlist = women_Empowerement.women.ToList();
-                return View(womenlist);
-            }
+        //[Route("DashBoard/GetWomenList")]
+        //public ActionResult GetWomenList()
+        //{
+        //    using(Women_EmpowermentEntities women_Empowerement=new Women_EmpowermentEntities())
+        //    {
+        //        var womenlist = women_Empowerement.women.ToList();
+        //        return View(womenlist);
+        //    }
             
-        }
+        //}
 
-        [HttpGet]
+        //[HttpGet]
         
-        public ActionResult Details(int id)
-        {
-            using(Women_EmpowerementEntities women=new Women_EmpowerementEntities())
-            {
-                var womendata =women.women.Find(id);
+        //public ActionResult Details(int id)
+        //{
+        //    using(Women_EmpowermentEntities women=new Women_EmpowermentEntities())
+        //    {
+        //        var womendata =women.women.Find(id);
                  
-                return View(womendata);
-            }
+        //        return View(womendata);
+        //    }
             
-        }
+        //}
 
         
 
-        [HttpPost]
-        public ActionResult Details(woman s,int id)
-        {
-            using(Women_EmpowerementEntities women = new Women_EmpowerementEntities())
-            {
-                woman womandata = women.women.Find(id);
-                if (Request.Form["Approved"] != null)
-                {
-                    womandata.status = true;
-                    women.SaveChanges();
-                    ViewBag.SuccessMessage = "Application Approved";
-                    return View();
+        //[HttpPost]
+        //public ActionResult Details(woman s,int id)
+        //{
+        //    using(Women_EmpowermentEntities women = new Women_EmpowermentEntities())
+        //    {
+        //        woman womandata = women.women.Find(id);
+        //        if (Request.Form["Approved"] != null)
+        //        {
+        //            womandata.status = true;
+        //            women.SaveChanges();
+        //            ViewBag.SuccessMessage = "Application Approved";
+        //            return View();
 
-                }
-                else if (Request.Form["Reject"] != null)
-                {
-                    womandata.status = false;
-                    women.SaveChanges();
-                    ViewBag.SuccessMessage = "Application Rejected";
-                    return View();
-                }
-                else
-                {
-                    return View();
-                }
-            }
+        //        }
+        //        else if (Request.Form["Reject"] != null)
+        //        {
+        //            womandata.status = false;
+        //            women.SaveChanges();
+        //            ViewBag.SuccessMessage = "Application Rejected";
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            return View();
+        //        }
+        //    }
             
 
-        }
+        //}
 
 
-        [HttpGet]
-        public ActionResult GetAllEnrollments()
-        {
-            using(var db=new  Women_EmpowerementEntities()){
-                var enrollments = db.getAllEnrollments().ToList();
-                return View(enrollments);
-            }
+        //[HttpGet]
+        //public ActionResult GetAllEnrollments()
+        //{
+        //    using(var db=new  Women_EmpowermentEntities()){
+        //        var enrollments = db.getAllEnrollments().ToList();
+        //        return View(enrollments);
+        //    }
          
-        }
+        //}
 
 
     }

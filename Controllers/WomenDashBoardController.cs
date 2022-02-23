@@ -27,7 +27,7 @@ namespace AdminModule.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            using (var db = new Women_EmpowerementEntities())
+            using (var db = new Women_EmpowermentEntities())
             {
                 var enrollments = db.getAllEnrollments().ToList();
                 return View(enrollments);
@@ -43,7 +43,7 @@ namespace AdminModule.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            using (var db = new Women_EmpowerementEntities())
+            using (var db = new Women_EmpowermentEntities())
             {
                 var enrollments = db.getAllEnrollmentsById(id).ToList().FirstOrDefault();
                 var enroll = db.enrollments.SingleOrDefault(w => w.women_id == id);
@@ -62,7 +62,7 @@ namespace AdminModule.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            using (var db = new Women_EmpowerementEntities())
+            using (var db = new Women_EmpowermentEntities())
             {
                 
                 var enroll = db.enrollments.SingleOrDefault(w => w.women_id == id);
